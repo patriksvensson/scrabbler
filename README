@@ -1,0 +1,9 @@
+Scrabbler
+---------
+
+A scrabble library for finding word combinations from a sequence of letters provided by the user, using a word list and prefix tree.
+
+Released under version 3 (or later where applicable) of the GNU Lesser
+Public License. See LICENCE.LESSER for further information.
+
+Copyright 2011 Patrik Svensson
