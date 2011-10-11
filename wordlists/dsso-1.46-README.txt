@@ -1,0 +1,5 @@
+http://dsso.se
+==============
+
+Licence available at:
+http://creativecommons.org/licenses/by-sa/3.0/legalcode
