@@ -8,8 +8,8 @@
     <ProjectGuid>{AB429008-8AF7-4FB4-AFB4-25441F92AF1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wordfeud.Core</RootNamespace>
-    <AssemblyName>Wordfeud.Core</AssemblyName>
+    <RootNamespace>Scrabbler</RootNamespace>
+    <AssemblyName>Scrabbler</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

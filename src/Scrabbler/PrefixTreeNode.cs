@@ -26,22 +26,22 @@ namespace Scrabbler
 {
 	public sealed class PrefixTreeNode
 	{
-		private readonly char _letter;
-		private bool _isWord;
+		private readonly char _letter;		
 		private readonly IList<PrefixTreeNode> _children;
 		private readonly PrefixTreeNode _parent;
+		private bool _isWord;
 
-		public PrefixTreeNode(PrefixTreeNode parent, char c)
+		internal PrefixTreeNode(PrefixTreeNode parent, char letter)
 		{
 			_parent = parent;
 			_children = new List<PrefixTreeNode>();
 			_isWord = false;
-			_letter = c;
+			_letter = letter;
 		}
 
 		public char Letter
 		{
-			get { return this._letter; }
+			get { return _letter; }
 		}
 
 		public bool IsWord
@@ -52,7 +52,7 @@ namespace Scrabbler
 
 		public IList<PrefixTreeNode> Children
 		{
-			get { return this._children; }
+			get { return _children; }
 		}
 
 		private PrefixTreeNode Parent
@@ -60,13 +60,13 @@ namespace Scrabbler
 			get { return _parent; }
 		} 
 
-		public PrefixTreeNode FindNode(char c)
+		public PrefixTreeNode FindNode(char letter)
 		{
 			if (_children != null)
 			{
 				foreach (PrefixTreeNode child in _children)
 				{
-					if (child._letter == c)
+					if (child.Letter == letter)
 					{
 						return child;
 					}

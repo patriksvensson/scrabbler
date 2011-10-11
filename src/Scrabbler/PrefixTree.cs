@@ -29,7 +29,7 @@ namespace Scrabbler
 		private readonly PrefixTreeNode _root;
 		private int _count;
 
-		public PrefixTreeNode Root
+		internal PrefixTreeNode Root
 		{
 			get { return _root; }
 		} 
@@ -74,38 +74,38 @@ namespace Scrabbler
 			}
 		}
 
-		public PrefixTreeNode GetPartialMatch(string s)
+		public bool IsPartialMatch(string word)
 		{
-			return this.GetMatch(s, false /* Partial match */);
+			return this.IsMatch(word, false /* Partial match */);
 		}
 
-		public PrefixTreeNode GetExactMatch(string s)
+		public bool IsExactMatch(string word)
 		{
-			return this.GetMatch(s, true /* Exact match */);
+			return this.IsMatch(word, true /* Exact match */);
 		}
 
-		private PrefixTreeNode GetMatch(string s, bool exact)
+		private bool IsMatch(string word, bool exact)
 		{
-			if (string.IsNullOrEmpty(s))
+			if (string.IsNullOrEmpty(word))
 			{
-				return null;
+				return false;
 			}
 
 			PrefixTreeNode current = _root;
-			char[] word = s.ToLowerInvariant().ToCharArray();			
+			char[] letters = word.ToLowerInvariant().ToCharArray();			
 			while (current != null)
 			{
-				for (int index = 0; index < word.Length; index++)
+				for (int index = 0; index < letters.Length; index++)
 				{
-					if (current.FindNode(word[index]) == null)
+					if (current.FindNode(letters[index]) == null)
 					{
-						return null;
+						return false;
 					}
-					current = current.FindNode(word[index]);
+					current = current.FindNode(letters[index]);
 				}
-				return exact ? (current.IsWord ? current : null) : current;
+				return exact ? (current.IsWord ? true : false) : true;
 			}
-			return null;
+			return false;
 		}
 	}
 }

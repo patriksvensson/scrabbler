@@ -58,8 +58,8 @@ namespace Scrabbler.Tests
 			PrefixTree tree = new PrefixTree();
 			tree.Insert("PATRIK");
 
-			Assert.IsNull(tree.GetExactMatch("PAT"));
-			Assert.IsNotNull(tree.GetExactMatch("PATRIK"));
+			Assert.IsFalse(tree.IsExactMatch("PAT"));
+			Assert.IsTrue(tree.IsExactMatch("PATRIK"));
 		}
 
 		[Test]
@@ -68,8 +68,8 @@ namespace Scrabbler.Tests
 			PrefixTree tree = new PrefixTree();
 			tree.Insert("PATRIK");
 
-			Assert.IsNull(tree.GetExactMatch("pat"));
-			Assert.IsNotNull(tree.GetExactMatch("patrik"));
+			Assert.IsFalse(tree.IsExactMatch("pat"));
+			Assert.IsTrue(tree.IsExactMatch("patrik"));
 		}
 
 		[Test]
@@ -78,11 +78,11 @@ namespace Scrabbler.Tests
 			PrefixTree tree = new PrefixTree();
 			tree.Insert("PATRIK");
 
-			Assert.IsNotNull(tree.GetPartialMatch("P"));
-			Assert.IsNotNull(tree.GetPartialMatch("PAT"));
-			Assert.IsNull(tree.GetPartialMatch("PAD"));
-			Assert.IsNull(tree.GetPartialMatch("T"));
-			Assert.IsNull(tree.GetPartialMatch(""));
+			Assert.IsTrue(tree.IsPartialMatch("P"));
+			Assert.IsTrue(tree.IsPartialMatch("PAT"));
+			Assert.IsFalse(tree.IsPartialMatch("PAD"));
+			Assert.IsFalse(tree.IsPartialMatch("T"));
+			Assert.IsFalse(tree.IsPartialMatch(""));
 		}
 
 		[Test]
@@ -91,10 +91,10 @@ namespace Scrabbler.Tests
 			PrefixTree tree = new PrefixTree();
 			tree.Insert("PATRIK");
 
-			Assert.IsNotNull(tree.GetPartialMatch("p"));
-			Assert.IsNotNull(tree.GetPartialMatch("pat"));
-			Assert.IsNull(tree.GetPartialMatch("pad"));
-			Assert.IsNull(tree.GetPartialMatch("t"));
+			Assert.IsTrue(tree.IsPartialMatch("p"));
+			Assert.IsTrue(tree.IsPartialMatch("pat"));
+			Assert.IsFalse(tree.IsPartialMatch("pad"));
+			Assert.IsFalse(tree.IsPartialMatch("t"));
 		}
 	}
 }

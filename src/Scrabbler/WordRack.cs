@@ -64,11 +64,11 @@ namespace Scrabbler
 			return letters.ToArray();
 		}
 
-		public void Consume(char character)
+		public void Consume(char letter)
 		{
-			if (_availableCharacters.Contains(character))
+			if (_availableCharacters.Contains(letter))
 			{
-				_availableCharacters.Remove(character);
+				_availableCharacters.Remove(letter);
 			}
 		}
 
